@@ -14,7 +14,7 @@ function printToDoList(todoArray) {
 }
 ;
 function markToDoList(todoArray, id) {
-    let [markTask] = todoArray.filter(task => {
+    let markTask = todoArray.find(task => {
         return task.id === id;
     });
     if (markTask && markTask.completed === false) {
@@ -57,3 +57,8 @@ addToDoList(todoList, {
     completed: false
 });
 printToDoList(todoList);
+function getLength(obj) {
+    return obj.length;
+}
+console.log(getLength(todoList));
+console.log(getLength("Meow"));
