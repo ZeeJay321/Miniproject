@@ -1,53 +1,53 @@
 interface Todo {
-    id: number
-    name: string
-    createdAt: Date
-    completed: boolean
+  id: number
+  name: string
+  createdAt: Date
+  completed: boolean
 };
 
 function addToDoList(todoArray: Todo[],newTask: Todo): void {
-    todoArray.push(newTask);
-    console.log(`New Task (${newTask}) pushed successfully\n`);
+  todoArray.push(newTask);
+  console.log(`New Task (${newTask}) pushed successfully\n`);
 };
 
 function printToDoList(todoArray: Todo[]): void {
-    todoArray.forEach(task => {
-        console.log(`Task ID ${task.id} | Task Name ${task.name} | Task Creation Time ${task.createdAt} | Task Status ${task.completed}`);
-    })
+  todoArray.forEach(task => {
+    console.log(`Task ID ${task.id} | Task Name ${task.name} | Task Creation Time ${task.createdAt} | Task Status ${task.completed}`);
+  })
 
-    console.log('\n');
+  console.log('\n');
 };
 
 function markToDoList(todoArray: Todo[], id: number): void {
-    let [markTask] = todoArray.filter(task => {
-        return task.id === id;
-    })
+  let markTask = todoArray.find(task => {
+    return task.id === id;
+  })
 
-    if (markTask && markTask.completed === false) {
-        markTask.completed = true;
-        console.log(`Task ID ${markTask.id} completed successfully\n`);
-    } else if (markTask && markTask.completed === true) {
-      console.log(`Task ID ${markTask.id} already completed successfully\n`);
-    } else {
-        console.log(`Task ID ${id} does not exist\n`);
-    }
+  if (markTask && markTask.completed === false) {
+    markTask.completed = true;
+    console.log(`Task ID ${markTask.id} completed successfully\n`);
+  } else if (markTask && markTask.completed === true) {
+    console.log(`Task ID ${markTask.id} already completed successfully\n`);
+  } else {
+    console.log(`Task ID ${id} does not exist\n`);
+  }
 };
 
 let todoList: Todo[] = [{ 
-    id: 1,
-    name: "Learn JavaScript",
-    createdAt: new Date(),
-    completed: false 
+  id: 1,
+  name: "Learn JavaScript",
+  createdAt: new Date(),
+  completed: false 
 }, { 
-    id: 2,
-    name: "Learn TypeScript",
-    createdAt: new Date(),
-    completed: false 
+  id: 2,
+  name: "Learn TypeScript",
+  createdAt: new Date(),
+  completed: false 
 }, { 
-    id: 3,
-    name: "Build To-Do App",
-    createdAt: new Date(),
-    completed: false 
+  id: 3,
+  name: "Build To-Do App",
+  createdAt: new Date(),
+  completed: false 
 }];
 
 printToDoList(todoList);
@@ -68,3 +68,10 @@ addToDoList(todoList, {
 });
 
 printToDoList(todoList);
+
+function getLength(obj: string | any[]) {
+  return obj.length;
+}
+
+console.log(getLength(todoList));
+console.log(getLength("Meow"));
