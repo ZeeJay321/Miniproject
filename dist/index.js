@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const moment_1 = __importDefault(require("moment"));
 ;
 function addToDoList(todoArray, newTask) {
     todoArray.push(newTask);
@@ -14,7 +18,7 @@ function printToDoList(todoArray) {
 }
 ;
 function markToDoList(todoArray, id) {
-    let markTask = todoArray.find(task => {
+    const markTask = todoArray.find(task => {
         return task.id === id;
     });
     if (markTask && markTask.completed === false) {
@@ -29,20 +33,20 @@ function markToDoList(todoArray, id) {
     }
 }
 ;
-let todoList = [{
+const todoList = [{
         id: 1,
         name: "Learn JavaScript",
-        createdAt: new Date(),
+        createdAt: (0, moment_1.default)().format('LLL'),
         completed: false
     }, {
         id: 2,
         name: "Learn TypeScript",
-        createdAt: new Date(),
+        createdAt: (0, moment_1.default)().format('LLL'),
         completed: false
     }, {
         id: 3,
         name: "Build To-Do App",
-        createdAt: new Date(),
+        createdAt: (0, moment_1.default)().format('LLL'),
         completed: false
     }];
 printToDoList(todoList);
@@ -53,12 +57,7 @@ printToDoList(todoList);
 addToDoList(todoList, {
     id: 4,
     name: "Practice OOP in TS",
-    createdAt: new Date(),
+    createdAt: (0, moment_1.default)().format('LLL'),
     completed: false
 });
 printToDoList(todoList);
-function getLength(obj) {
-    return obj.length;
-}
-console.log(getLength(todoList));
-console.log(getLength("Meow"));

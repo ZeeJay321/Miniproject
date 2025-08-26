@@ -1,7 +1,9 @@
+import moment from "moment";
+
 interface Todo {
   id: number
   name: string
-  createdAt: Date
+  createdAt: string
   completed: boolean
 };
 
@@ -19,7 +21,7 @@ function printToDoList(todoArray: Todo[]): void {
 };
 
 function markToDoList(todoArray: Todo[], id: number): void {
-  let markTask = todoArray.find(task => {
+  const markTask = todoArray.find(task => {
     return task.id === id;
   })
 
@@ -33,20 +35,20 @@ function markToDoList(todoArray: Todo[], id: number): void {
   }
 };
 
-let todoList: Todo[] = [{ 
+const todoList: Todo[] = [{ 
   id: 1,
   name: "Learn JavaScript",
-  createdAt: new Date(),
+  createdAt: moment().format('LLL'),
   completed: false 
 }, { 
   id: 2,
   name: "Learn TypeScript",
-  createdAt: new Date(),
+  createdAt: moment().format('LLL'),
   completed: false 
 }, { 
   id: 3,
   name: "Build To-Do App",
-  createdAt: new Date(),
+  createdAt: moment().format('LLL'),
   completed: false 
 }];
 
@@ -63,15 +65,8 @@ printToDoList(todoList);
 addToDoList(todoList, {
   id: 4,
   name: "Practice OOP in TS",
-  createdAt: new Date(),
+  createdAt: moment().format('LLL'),
   completed: false
 });
 
 printToDoList(todoList);
-
-function getLength(obj: string | any[]) {
-  return obj.length;
-}
-
-console.log(getLength(todoList));
-console.log(getLength("Meow"));
