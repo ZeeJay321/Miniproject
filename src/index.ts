@@ -1,54 +1,55 @@
 import moment from "moment";
 
 interface Todo {
-  id: number
-  name: string
-  createdAt: string
+  id: number,
+  name: string,
+  createdAt: string,
   completed: boolean
 };
 
-function addToDoList(todoArray: Todo[],newTask: Todo): void {
+function addToDoList(todoArray: Todo[], newTask: Todo): void {
   todoArray.push(newTask);
-  console.log(`New Task (${newTask}) pushed successfully\n`);
+  console.log(`\nNew Task (${newTask}) pushed successfully`);
 };
 
 function printToDoList(todoArray: Todo[]): void {
   todoArray.forEach(task => {
-    console.log(`Task ID ${task.id} | Task Name ${task.name} | Task Creation Time ${task.createdAt} | Task Status ${task.completed}`);
-  })
-
-  console.log('\n');
+    console.log(`\nTask ID ${task.id} | Task Name ${task.name} | Task Creation Time ${task.createdAt} | Task Status ${task.completed}`);
+  });
 };
 
 function markToDoList(todoArray: Todo[], id: number): void {
   const markTask = todoArray.find(task => {
     return task.id === id;
-  })
+  }) || {
+    id: -1,
+    completed: false
+  };
 
-  if (markTask && markTask.completed === false) {
+  if (markTask.id !== 1 && markTask.completed === false) {
     markTask.completed = true;
-    console.log(`Task ID ${markTask.id} completed successfully\n`);
+    console.log(`\nTask ID ${markTask.id} completed successfully\n`);
   } else if (markTask && markTask.completed === true) {
-    console.log(`Task ID ${markTask.id} already completed successfully\n`);
+    console.log(`\nTask ID ${markTask.id} already completed successfully\n`);
   } else {
-    console.log(`Task ID ${id} does not exist\n`);
+    console.log(`\nTask ID ${id} does not exist\n`);
   }
 };
 
 const todoList: Todo[] = [{ 
   id: 1,
-  name: "Learn JavaScript",
+  name: 'Learn JavaScript',
   createdAt: moment().format('LLL'),
   completed: false 
 }, { 
   id: 2,
-  name: "Learn TypeScript",
+  name: 'Learn TypeScript',
   createdAt: moment().format('LLL'),
   completed: false 
 }, { 
   id: 3,
-  name: "Build To-Do App",
-  createdAt: moment().format('LLL'),
+  name: 'Build To-Do App',
+  createdAt:moment().format('LLL'),
   completed: false 
 }];
 
@@ -64,7 +65,7 @@ printToDoList(todoList);
 
 addToDoList(todoList, {
   id: 4,
-  name: "Practice OOP in TS",
+  name: 'Practice OOP in TS',
   createdAt: moment().format('LLL'),
   completed: false
 });
