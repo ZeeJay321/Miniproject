@@ -107,6 +107,7 @@ function handleMenu(option) {
             });
             break;
         case "3":
+            printToDoList(todoList);
             rl.question("\nEnter Task ID to mark as done: ", (taskId) => {
                 markToDoList(todoList, parseInt(taskId));
                 showMenu();
